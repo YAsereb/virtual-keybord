@@ -19,6 +19,13 @@ body {
           align-items: center;
 }
 
+.textarea {
+  width: 1200px;
+  height: 200px;
+  font-size: 20px;
+  margin: 60px 0;
+}
+
 .keyboard {
   background: #0d4ea3;
   border: 4px solid rgba(31, 12, 56, 0.719);
@@ -44,18 +51,10 @@ body {
   height: 60px;
   border-radius: 3px;
   background-color: #091a77;
-  border: #0d4ea3;
+  border: #041e57 solid 1px;
   color: aliceblue;
   border-radius: 3px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  position: relative;
 }
 
 .key:hover {
@@ -69,23 +68,152 @@ body {
   background: #125e8a;
 }
 
-.CapsLock,
+.key.active-key {
+  border-radius: 25%;
+  background: #125e8a;
+}
+
+.rowKeysEng,
+.rowKeysEngUp,
+.rowKeysRus,
+.rowKeysRusUp {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  visibility: hidden;
+}
+
+.active {
+  visibility: visible;
+}
+
+.ArrowUp::before,
+.ArrowLeft::before,
+.ArrowDown::before,
+.ArrowRight::before {
+  content: '';
+  background: url(https://img.icons8.com/ios-glyphs/30/ffffff/arrow.png);
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.ArrowUp {
+  margin-left: 40px;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+
+.ArrowLeft {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.ArrowDown {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.CapsLock {
+  width: 100px;
+}
+
+.CapsLock::before {
+  content: 'CAPS';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
 .Tab {
   width: 80px;
 }
 
+.Tab::before {
+  content: 'Tab';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
 .ShiftLeft,
-.ShiftRight,
+.ShiftRight {
+  width: 140px;
+}
+
+.ShiftLeft::before,
+.ShiftRight::before {
+  content: 'SHIFT';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
 .Backspace {
-  width: 120px;
+  width: 80px;
+}
+
+.Backspace::before {
+  content: '';
+  background: url(https://img.icons8.com/ios/50/ffffff/backspace.png);
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
 .Enter {
-  width: 100px;
+  width: 110px;
+}
+
+.Enter::before {
+  content: '';
+  background: url(https://img.icons8.com/external-solidglyph-m-oki-orlando/32/ffffff/external-Enter-basic-ui-solidglyph-m-oki-orlando.png);
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  margin: 0 auto;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
 .Space {
-  width: 400px;
+  width: 500px;
+}
+
+.MetaLeft::before {
+  content: '';
+  background: url(https://img.icons8.com/fluency/48/000000/windows-10.png);
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  margin: 0 auto;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
 .ControlLeft,
@@ -96,6 +224,26 @@ body {
   width: 80px;
 }
 
+.ControlLeft::before,
+.ControlRight::before {
+  content: 'CTRL';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.AltLeft::before,
+.AltRight::before {
+  content: 'ALT';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
 .ArrowLeft {
-  margin-left: 150px;
+  margin-left: 25px;
 }
