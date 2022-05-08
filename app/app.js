@@ -127,10 +127,26 @@ const insertKeyContent = () => {
 insertKeyContent();
 
 // start active key 
+
 let startActiveKey = document.querySelectorAll('.rowKeysEng');
-startActiveKey.forEach((elem) => {
-  elem.classList.add('active');
-});
+
+const addActiveLanguage = () => {
+  if (!localStorage.getItem('language')) {
+    startActiveKey.forEach((elem) => {
+      elem.classList.add('active');
+    });
+  } else if (localStorage.getItem('language') === 'Eng') {
+    document.querySelectorAll('.rowKeysEng').forEach((elem) => {
+      elem.classList.add('active');
+    })
+  } else {
+    document.querySelectorAll('.rowKeysRus').forEach((elem) => {
+      elem.classList.add('active');
+    })
+  }
+}
+
+addActiveLanguage();
 
 // event key on keyboard
 
@@ -225,6 +241,7 @@ const changeLanguage = () => {
     });
     language = 'Rus';
   }
+  localStorage.setItem('language', `${language}`);
 }
 const allKey = document.querySelectorAll('.key');
 allKey.forEach((elem) => {
