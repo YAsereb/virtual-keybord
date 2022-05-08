@@ -306,17 +306,15 @@ document.addEventListener('keydown', (e) => {
   if (key === CapsLock) {
     changeActiveKey();
     caps = !caps;
-    console.log(caps);
     if (caps) {
       CapsLock.classList.add('active-key');
     }
-
   } else if (key === Backspace) {
     TEXTAREA_ID.value = TEXTAREA_ID.value.slice(0, TEXTAREA_ID.value.length - 1)
   } else if (key === Enter) {
     TEXTAREA_ID.value += '\n';
   } else if (key === Tab) {
-    TEXTAREA_ID.value += '    ';
+    TEXTAREA_ID.value += '\t';
   } else if (key === Space) {
     TEXTAREA_ID.value += ' ';
   } else if (key === ArrowUp) {
@@ -336,7 +334,7 @@ document.addEventListener('keydown', (e) => {
     changeLanguage();
   } else {
     if (!e.ctrlKey && !e.altKey && !e.metaKey) {
-      let keyContent = e.key;
+      let keyContent = key.querySelector('.active').textContent;
       TEXTAREA_ID.value += keyContent;
     }
   }
