@@ -55,6 +55,8 @@ body {
   color: aliceblue;
   border-radius: 3px;
   position: relative;
+  -webkit-box-shadow: 0 5px 3px 4px #08294f;
+          box-shadow: 0 5px 3px 4px #08294f;
 }
 
 .key:hover {
@@ -63,12 +65,10 @@ body {
   transition: 0.3s;
 }
 
-.key:active {
-  border-radius: 25%;
-  background: #125e8a;
-}
-
 .key.active-key {
+  top: 5px;
+  -webkit-box-shadow: 0 0px 3px 4px #08294f;
+          box-shadow: 0 0px 3px 4px #08294f;
   border-radius: 25%;
   background: #125e8a;
 }
@@ -99,26 +99,32 @@ body {
   width: 30px;
   height: 30px;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
 }
 
 .ArrowUp {
-  margin-left: 40px;
-  -webkit-transform: rotate(-90deg);
-          transform: rotate(-90deg);
+  margin-left: 45px;
 }
 
-.ArrowLeft {
+.ArrowUp::before {
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  margin: 15px;
+}
+
+.ArrowLeft::before {
+  margin: 15px;
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
 }
 
-.ArrowDown {
+.ArrowDown::before {
+  margin: 15px;
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
+}
+
+.ArrowRight::before {
+  margin: 15px;
 }
 
 .CapsLock {
@@ -246,4 +252,9 @@ body {
 
 .ArrowLeft {
   margin-left: 25px;
+}
+
+.changeLanguage {
+  margin-top: 30px;
+  font-size: 20px;
 }

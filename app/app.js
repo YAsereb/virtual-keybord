@@ -54,8 +54,13 @@ CONTAINER.prepend(TEXTAREA);
 // create keyboard
 let keyBoard = '<div class=keyboard-wrapper><div class=keyboard></div></div>';
 
-CONTAINER.insertAdjacentHTML('beforeend', keyBoard)
-const KEYBOARD = document.querySelector('.keyboard')
+CONTAINER.insertAdjacentHTML('beforeend', keyBoard);
+const KEYBOARD = document.querySelector('.keyboard');
+
+let changeLanguageHTML = '<div class=changeLanguage>Для смены языка зажмите Alt + CTRL</div>';
+
+CONTAINER.insertAdjacentHTML('beforeend', changeLanguageHTML);
+
 
 // create row keys
 
@@ -71,6 +76,8 @@ KEYBOARD.insertAdjacentHTML('afterbegin', rowKeys);
 const ROWS = document.querySelectorAll('.row');
 
 let keys = '<div class=key><div class=rowKeysEng></div><div class=rowKeysEngUp></div><div class=rowKeysRus></div><div class=rowKeysRusUp></div></div>';
+
+
 
 const insertKey = (arr, row) => {
   for (let i = 0; i < arr[row].length; i++) {
@@ -122,7 +129,7 @@ insertKeyContent();
 // start active key 
 let startActiveKey = document.querySelectorAll('.rowKeysEng');
 startActiveKey.forEach((elem) => {
-  elem.classList.add('active')
+  elem.classList.add('active');
 });
 
 // event key on keyboard
@@ -136,9 +143,7 @@ const Enter = document.querySelector('.Enter');
 const ShiftLeft = document.querySelector('.ShiftLeft');
 const ShiftRight = document.querySelector('.ShiftRight');
 const ArrowUp = document.querySelector('.ArrowUp');
-const ControlLeft = document.querySelector('.ControlLeft');
 const Space = document.querySelector('.Space');
-const ControlRight = document.querySelector('.ControlRight');
 const ArrowDown = document.querySelector('.ArrowDown');
 const ArrowLeft = document.querySelector('.ArrowLeft');
 const ArrowRight = document.querySelector('.ArrowRight');
@@ -177,39 +182,48 @@ const changeActiveKey = () => {
   }
 }
 
+let language = '';
+
 const changeLanguage = () => {
+
   let active = document.querySelector('.active');
+
   if (active.classList.contains('rowKeysEng')) {
     document.querySelectorAll('.rowKeysEng').forEach(element => {
       element.classList.remove('active');
     });
     document.querySelectorAll('.rowKeysRus').forEach(element => {
-      element.classList.add('active')
+      element.classList.add('active');
     });
+    language = 'Rus';
   }
   if (active.classList.contains('rowKeysRus')) {
     document.querySelectorAll('.rowKeysRus').forEach(element => {
       element.classList.remove('active');
     });
     document.querySelectorAll('.rowKeysEng').forEach(element => {
-      element.classList.add('active')
+      element.classList.add('active');
     });
+    language = 'Eng';
   }
   if (active.classList.contains('rowKeysRusUp')) {
     document.querySelectorAll('.rowKeysRusUp').forEach(element => {
       element.classList.remove('active');
     });
     document.querySelectorAll('.rowKeysEngUp').forEach(element => {
-      element.classList.add('active')
+      element.classList.add('active');
     });
+    language = 'Eng';
+
   }
   if (active.classList.contains('rowKeysEngUp')) {
     document.querySelectorAll('.rowKeysEngUp').forEach(element => {
       element.classList.remove('active');
     });
     document.querySelectorAll('.rowKeysRusUp').forEach(element => {
-      element.classList.add('active')
+      element.classList.add('active');
     });
+    language = 'Rus';
   }
 }
 const allKey = document.querySelectorAll('.key');
@@ -217,6 +231,7 @@ allKey.forEach((elem) => {
 
   elem.addEventListener('click', (event) => {
     if (event.target === CapsLock) {
+      CapsLock.classList.toggle('active-key');
       changeActiveKey();
     } else if (event.target === Backspace) {
       TEXTAREA_ID.value = TEXTAREA_ID.value.slice(0, TEXTAREA_ID.value.length - 1)
@@ -240,6 +255,18 @@ allKey.forEach((elem) => {
     }
 
   });
+  elem.addEventListener('mousedown', (e) => {
+    if (e.target !== CapsLock) {
+      elem.classList.add('active-key');
+    }
+  });
+
+  elem.addEventListener('mouseup', (e) => {
+    if (e.target !== CapsLock) {
+      elem.classList.remove('active-key');
+    }
+  });
+
   elem.addEventListener('mousedown', (event) => {
     if (event.target === ShiftLeft || event.target === ShiftRight) {
       changeActiveKey();
@@ -252,14 +279,21 @@ allKey.forEach((elem) => {
   });
 });
 
+let shift = false;
+let caps = true;
+
 document.addEventListener('keydown', (e) => {
   let key = document.querySelector(`.${e.code}`);
   key.classList.add('active-key');
-
-
   e.preventDefault();
   if (key === CapsLock) {
     changeActiveKey();
+    caps = !caps;
+    console.log(caps);
+    if (caps) {
+      CapsLock.classList.add('active-key');
+    }
+
   } else if (key === Backspace) {
     TEXTAREA_ID.value = TEXTAREA_ID.value.slice(0, TEXTAREA_ID.value.length - 1)
   } else if (key === Enter) {
@@ -277,8 +311,11 @@ document.addEventListener('keydown', (e) => {
   } else if (key === ArrowRight) {
     TEXTAREA_ID.value += '►';
   } else if (key === ShiftLeft || key === ShiftRight) {
-    changeActiveKey();
-  } else if (e.shiftKey && (key === ControlLeft || key === ControlRight)) {
+    if (!shift) {
+      changeActiveKey();
+    }
+    shift = true;
+  } else if (e.ctrlKey && e.altKey) {
     changeLanguage();
   } else {
     if (!e.ctrlKey && !e.altKey && !e.metaKey) {
@@ -290,11 +327,24 @@ document.addEventListener('keydown', (e) => {
 
 document.addEventListener('keyup', (e) => {
   let key = document.querySelector(`.${e.code}`);
-  key.classList.remove('active-key')
+  if (key !== CapsLock) {
+    key.classList.remove('active-key')
+  }
+  if (key === CapsLock) {
+    if (caps === true) {
+      CapsLock.classList.remove('active-key');
+    }
+  }
+
   if (key === ShiftLeft || key === ShiftRight) {
-    changeActiveKey();
+    if (shift) {
+      changeActiveKey();
+    }
+    shift = false;
   }
 });
+
+
 
 
 
