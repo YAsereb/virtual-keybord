@@ -290,6 +290,9 @@ let caps = true;
 
 document.addEventListener('keydown', (e) => {
   const key = document.querySelector(`.${e.code}`);
+  if (!key) {
+    return;
+  }
   key.classList.add('active-key');
   e.preventDefault();
   if (key === CapsLock) {
@@ -332,6 +335,9 @@ document.addEventListener('keydown', (e) => {
 
 document.addEventListener('keyup', (e) => {
   const key = document.querySelector(`.${e.code}`);
+  if (!key) {
+    return;
+  }
   if (key !== CapsLock) {
     key.classList.remove('active-key');
   }
