@@ -1,0 +1,227 @@
+body {
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.textarea {
+  width: 1200px;
+  height: 200px;
+  font-size: 20px;
+  margin: 60px 0;
+}
+
+.keyboard {
+  background: #0d4ea3;
+  border: 4px solid rgba(31, 12, 56, 0.719);
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.row {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.row:first-child {
+  margin-top: 20px;
+}
+
+.key {
+  margin: 5px;
+  width: 60px;
+  height: 60px;
+  font-size: 20px;
+  border-radius: 3px;
+  background-color: #091a77;
+  border: #041e57 solid 1px;
+  color: aliceblue;
+  border-radius: 3px;
+  position: relative;
+  -webkit-box-shadow: 0 5px 3px 2px #08294f;
+          box-shadow: 0 5px 3px 2px #08294f;
+}
+
+.key:hover {
+  background: #0d4ea3;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.key.active-key {
+  top: 5px;
+  -webkit-box-shadow: 0 0px 3px 4px #08294f;
+          box-shadow: 0 0px 3px 4px #08294f;
+  border-radius: 25%;
+  background: #125e8a;
+}
+
+.rowKeysEng,
+.rowKeysEngUp,
+.rowKeysRus,
+.rowKeysRusUp {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  visibility: hidden;
+}
+
+.active {
+  visibility: visible;
+}
+
+.ArrowUp {
+  margin-left: 45px;
+}
+
+.CapsLock {
+  width: 100px;
+}
+
+.CapsLock::before {
+  content: 'CAPS';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.Tab {
+  width: 80px;
+}
+
+.Tab::before {
+  content: 'Tab';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.ShiftLeft,
+.ShiftRight {
+  width: 140px;
+}
+
+.ShiftLeft::before,
+.ShiftRight::before {
+  content: 'SHIFT';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.Backspace {
+  width: 80px;
+}
+
+.Backspace::before {
+  content: '';
+  background: url(https://img.icons8.com/ios/50/ffffff/backspace.png);
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.Enter {
+  width: 110px;
+}
+
+.Enter::before {
+  content: '';
+  background: url(https://img.icons8.com/external-solidglyph-m-oki-orlando/32/ffffff/external-Enter-basic-ui-solidglyph-m-oki-orlando.png);
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  margin: 0 auto;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.Space {
+  width: 500px;
+}
+
+.MetaLeft::before {
+  content: '';
+  background: url(https://img.icons8.com/fluency/48/000000/windows-10.png);
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  margin: 0 auto;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.ControlLeft,
+.ControlRight,
+.AltLeft,
+.AltRight,
+.MetaLeft {
+  width: 80px;
+}
+
+.ControlLeft::before,
+.ControlRight::before {
+  content: 'CTRL';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.AltLeft::before,
+.AltRight::before {
+  content: 'ALT';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.ArrowLeft {
+  margin-left: 25px;
+}
+
+.changeLanguage {
+  margin-top: 30px;
+  font-size: 20px;
+}
