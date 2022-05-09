@@ -7,27 +7,27 @@ const KEY = {
   ['ControlLeft', 'MetaLeft', 'AltLeft', 'Space', 'AltRight', 'ControlRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight']],
 
   rowKeysEng: [['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', ''],
-  ['', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\',],
-  ['', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', "'", ''],
-  ['', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', '', ''],
-  ['', '', '', ' ', '', '', '', '', '']],
+  ['\t', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\',],
+  ['', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', "'", '\n'],
+  ['', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', '', '▲'],
+  ['', '', '', ' ', '', '', '◄', '▼', '►']],
   rowKeysEngUp: [['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', ''],
-  ['', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '{', '}', '|',],
-  ['', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ':', '"', ''],
-  ['', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '<', '>', '?', '', ''],
-  ['', '', '', ' ', '', '', '', '', '']],
+  ['\t', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '{', '}', '|',],
+  ['', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ':', '"', '\n'],
+  ['', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '<', '>', '?', '', '▲'],
+  ['', '', '', ' ', '', '', '◄', '▼', '►']],
 
   rowKeysRus: [['ё', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', ''],
-  ['', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', '\\',],
-  ['', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', ''],
-  ['', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.', '', ''],
-  ['', '', '', ' ', '', '', '', '', '']],
+  ['\t', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', '\\',],
+  ['', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', '\n'],
+  ['', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.', '', '▲'],
+  ['', '', '', ' ', '', '', '◄', '▼', '►']],
 
   rowKeysRusUp: [['Ё', '!', '"', '№', ';', '%', ':', '?', '*', '(', ')', '_', '+', ''],
-  ['', 'Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ш', 'Щ', 'З', 'Х', 'Ъ', '/',],
-  ['', 'Ф', 'Ы', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Э', ''],
-  ['', 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', ',', '', ''],
-  ['', '', '', ' ', '', '', '', '', '']],
+  ['\t', 'Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ш', 'Щ', 'З', 'Х', 'Ъ', '/',],
+  ['', 'Ф', 'Ы', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Э', '\n'],
+  ['', 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', ',', '', '▲'],
+  ['', '', '', ' ', '', '', '◄', '▼', '►']],
 }
 
 //create html
@@ -38,7 +38,7 @@ let htmlContainer = '<div class=container></div>';
 
 BODY.insertAdjacentHTML('afterbegin', htmlContainer);
 
-const CONTAINER = document.querySelector('.container')
+const CONTAINER = document.querySelector('.container');
 
 // create textarea
 const TEXTAREA = document.createElement('textarea');
@@ -61,7 +61,6 @@ let changeLanguageHTML = '<div class=changeLanguage>Для смены языка
 
 CONTAINER.insertAdjacentHTML('beforeend', changeLanguageHTML);
 
-
 // create row keys
 
 let rowKeys = '<div class=row></div>';
@@ -76,8 +75,6 @@ KEYBOARD.insertAdjacentHTML('afterbegin', rowKeys);
 const ROWS = document.querySelectorAll('.row');
 
 let keys = '<div class=key><div class=rowKeysEng></div><div class=rowKeysEngUp></div><div class=rowKeysRus></div><div class=rowKeysRusUp></div></div>';
-
-
 
 const insertKey = (arr, row) => {
   for (let i = 0; i < arr[row].length; i++) {
@@ -152,18 +149,10 @@ addActiveLanguage();
 
 const TEXTAREA_ID = document.querySelector('#textarea');
 
-const Tab = document.querySelector('.Tab');
 const Backspace = document.querySelector('.Backspace');
 const CapsLock = document.querySelector('.CapsLock');
-const Enter = document.querySelector('.Enter');
 const ShiftLeft = document.querySelector('.ShiftLeft');
 const ShiftRight = document.querySelector('.ShiftRight');
-const ArrowUp = document.querySelector('.ArrowUp');
-const Space = document.querySelector('.Space');
-const ArrowDown = document.querySelector('.ArrowDown');
-const ArrowLeft = document.querySelector('.ArrowLeft');
-const ArrowRight = document.querySelector('.ArrowRight');
-
 
 const changeActiveKey = () => {
   let active = document.querySelector('.active');
@@ -243,32 +232,45 @@ const changeLanguage = () => {
   }
   localStorage.setItem('language', `${language}`);
 }
+
 const allKey = document.querySelectorAll('.key');
+
 allKey.forEach((elem) => {
 
   elem.addEventListener('click', (event) => {
+
     if (event.target === CapsLock) {
       CapsLock.classList.toggle('active-key');
       changeActiveKey();
+
     } else if (event.target === Backspace) {
-      TEXTAREA_ID.value = TEXTAREA_ID.value.slice(0, TEXTAREA_ID.value.length - 1)
-    } else if (event.target === Enter) {
-      TEXTAREA_ID.value += '\n';
-    } else if (event.target === Tab) {
-      TEXTAREA_ID.value += '    ';
-    } else if (event.target === Space) {
-      TEXTAREA_ID.value += ' ';
-    } else if (event.target === ArrowUp) {
-      TEXTAREA_ID.value += '▲';
-    } else if (event.target === ArrowLeft) {
-      TEXTAREA_ID.value += '◄';
-    } else if (event.target === ArrowDown) {
-      TEXTAREA_ID.value += '▼';
-    } else if (event.target === ArrowRight) {
-      TEXTAREA_ID.value += '►';
+      let start = TEXTAREA_ID.selectionStart;
+
+      if (TEXTAREA_ID.selectionEnd === 0) {
+        return
+
+      } else {
+        TEXTAREA_ID.value = TEXTAREA_ID.value.slice(0, TEXTAREA_ID.selectionStart - 1) + TEXTAREA_ID.value.slice(TEXTAREA_ID.selectionEnd, TEXTAREA_ID.length);
+        start--;
+        TEXTAREA_ID.selectionStart = TEXTAREA_ID.selectionEnd = start;
+      }
+
     } else {
-      let keyContent = elem.querySelector('.active');
-      TEXTAREA_ID.value += keyContent.textContent;
+
+      let keyContent = elem.querySelector('.active').textContent;
+      let start = TEXTAREA_ID.selectionStart;
+      let end = TEXTAREA_ID.selectionEnd;
+
+      if (end === TEXTAREA_ID.value.length) {
+        TEXTAREA_ID.value += keyContent;
+
+      } else {
+
+        TEXTAREA_ID.value = TEXTAREA_ID.value.slice(0, start) + keyContent +
+          TEXTAREA_ID.value.slice(end, TEXTAREA_ID.value.length);
+        start++;
+        TEXTAREA_ID.selectionStart = TEXTAREA_ID.selectionEnd = start;
+      }
     }
 
   });
@@ -310,21 +312,20 @@ document.addEventListener('keydown', (e) => {
       CapsLock.classList.add('active-key');
     }
   } else if (key === Backspace) {
-    TEXTAREA_ID.value = TEXTAREA_ID.value.slice(0, TEXTAREA_ID.value.length - 1)
-  } else if (key === Enter) {
-    TEXTAREA_ID.value += '\n';
-  } else if (key === Tab) {
-    TEXTAREA_ID.value += '\t';
-  } else if (key === Space) {
-    TEXTAREA_ID.value += ' ';
-  } else if (key === ArrowUp) {
-    TEXTAREA_ID.value += '▲';
-  } else if (key === ArrowLeft) {
-    TEXTAREA_ID.value += '◄';
-  } else if (key === ArrowDown) {
-    TEXTAREA_ID.value += '▼';
-  } else if (key === ArrowRight) {
-    TEXTAREA_ID.value += '►';
+
+    let start = TEXTAREA_ID.selectionStart;
+
+    if (TEXTAREA_ID.selectionEnd === 0) {
+
+      return
+
+    } else {
+
+      TEXTAREA_ID.value = TEXTAREA_ID.value.slice(0, TEXTAREA_ID.selectionStart - 1) + TEXTAREA_ID.value.slice(TEXTAREA_ID.selectionEnd, TEXTAREA_ID.length);
+      start--;
+      TEXTAREA_ID.selectionStart = TEXTAREA_ID.selectionEnd = start;
+
+    }
   } else if (key === ShiftLeft || key === ShiftRight) {
     if (!shift) {
       changeActiveKey();
@@ -334,8 +335,21 @@ document.addEventListener('keydown', (e) => {
     changeLanguage();
   } else {
     if (!e.ctrlKey && !e.altKey && !e.metaKey) {
+
       let keyContent = key.querySelector('.active').textContent;
-      TEXTAREA_ID.value += keyContent;
+      let start = TEXTAREA_ID.selectionStart;
+      let end = TEXTAREA_ID.selectionEnd;
+
+      if (end === TEXTAREA_ID.value.length) {
+        TEXTAREA_ID.value += keyContent;
+      } else {
+
+        TEXTAREA_ID.value = TEXTAREA_ID.value.slice(0, start) + keyContent +
+          TEXTAREA_ID.value.slice(end, TEXTAREA_ID.value.length);
+        start++;
+        TEXTAREA_ID.selectionStart = TEXTAREA_ID.selectionEnd = start;
+
+      }
     }
   }
 });
